@@ -1,0 +1,263 @@
+:root {
+    --ink: #10243e;
+    --chalk: #f2f4f7;
+    --white: #ffffff;
+    --steel: #5a6a7e;
+    --line: #d5dce4;
+    --field: #a9b5c3;
+    --signal: #f2551d;
+    --signal-dark: #c9400f;
+
+    --font-display: "Barlow Condensed", "Arial Narrow", Impact, sans-serif;
+    --font-body: "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+h1,
+h4,
+p {
+    margin: 0;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    font-family: var(--font-body);
+    color: var(--ink);
+    background: var(--chalk);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Cabeçalho ---------- */
+header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1rem;
+    padding: 0.85rem clamp(1.25rem, 6vw, 5rem);
+    background: var(--white);
+    border-bottom: 1px solid var(--line);
+}
+
+header img {
+    display: block;
+    height: 44px;
+    width: auto;
+    max-width: 55%;
+    object-fit: contain;
+}
+
+header h4 {
+    margin-left: auto;
+    padding-left: 0.75rem;
+    border-left: 3px solid var(--signal);
+    font-size: 0.9rem;
+    font-weight: 500;
+    line-height: 1.25;
+    color: var(--steel);
+}
+
+header a {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    border: 1px solid var(--field);
+    border-radius: 4px;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+header a::before {
+    content: "←";
+    margin-right: 0.5rem;
+}
+
+header a:hover {
+    color: var(--white);
+    background: var(--ink);
+    border-color: var(--ink);
+}
+
+header a:focus-visible,
+form button:focus-visible,
+input:focus-visible {
+    outline: 3px solid var(--signal);
+    outline-offset: 2px;
+}
+
+/* ---------- Conteúdo ---------- */
+main {
+    display: grid;
+    place-items: center;
+    padding: clamp(1.5rem, 5vw, 4rem) clamp(1.25rem, 6vw, 5rem);
+}
+
+#containerCentral,
+#containerGeral {
+    width: 100%;
+    max-width: 680px;
+    padding: clamp(1.25rem, 4vw, 2.5rem);
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-left: 6px solid var(--ink);
+    border-radius: 4px;
+}
+
+main h1 {
+    margin-bottom: 1.75rem;
+    font-family: var(--font-display);
+    font-size: clamp(2.25rem, 5vw, 3.25rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.01em;
+}
+
+main h1::before {
+    content: "";
+    display: block;
+    width: 3rem;
+    height: 0.35rem;
+    margin-bottom: 1rem;
+    background: var(--signal);
+}
+
+/* ---------- Formulário ---------- */
+form {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+}
+
+.campos {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.campos:first-of-type {
+    grid-column: 1 / -1;
+}
+
+
+#containerCentral .campos:nth-of-type(4) {
+    grid-column: 1 / -1;
+}
+
+label {
+    font-size: 0.875rem;
+    font-weight: 700;
+}
+
+input {
+    width: 100%;
+    min-height: 3rem;
+    padding: 0 0.9rem;
+    font: inherit;
+    color: var(--ink);
+    background: var(--white);
+    border: 1px solid var(--field);
+    border-radius: 4px;
+    transition: border-color 0.2s ease;
+}
+
+input::placeholder {
+    color: #7a8a9d;
+}
+
+input:hover {
+    border-color: var(--steel);
+}
+
+input:focus {
+    border-color: var(--ink);
+}
+
+form button {
+    min-height: 3rem;
+    margin-top: 0.5rem;
+    font: inherit;
+    font-weight: 700;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+form button[type="submit"] {
+    color: var(--white);
+    background: var(--ink);
+    border: 1px solid var(--ink);
+}
+
+form button[type="submit"]:hover {
+    background: var(--signal-dark);
+    border-color: var(--signal-dark);
+}
+
+form button[type="reset"] {
+    color: var(--steel);
+    background: var(--white);
+    border: 1px solid var(--field);
+}
+
+form button[type="reset"]:hover {
+    color: var(--ink);
+    border-color: var(--ink);
+}
+
+/* ---------- Rodapé ---------- */
+footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem 1.5rem;
+    padding: 1.5rem clamp(1.25rem, 6vw, 5rem);
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    color: rgba(255, 255, 255, 0.7);
+    background: var(--ink);
+}
+
+footer p {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--white);
+}
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 640px) {
+    header h4 {
+        order: 3;
+        flex-basis: 100%;
+        margin-left: 0;
+    }
+
+    header a {
+        margin-left: auto;
+    }
+}
+
+@media (max-width: 560px) {
+    form {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    header a,
+    input,
+    form button {
+        transition: none;
+    }
+}
